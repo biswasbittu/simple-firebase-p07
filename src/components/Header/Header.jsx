@@ -6,7 +6,7 @@ const Header = () => {
 
 
   return (
-    <div className=" bg-slate-500 py-2">
+    <div className=" bg-slate-500 p-3">
       <div className="container mx-auto">
         <nav className="flex items-center justify-between">
           <div>
@@ -18,10 +18,25 @@ const Header = () => {
           </div>
           <div>
             <ul className="flex gap-5 text-sky-400 text-lg font-bold">
-              <NavLink to="/" className={(isActive)=> isActive? 'text-blue-700': '' }>Home</NavLink>
-              <NavLink>Login</NavLink>
-              <NavLink>LogOut</NavLink>
-              <NavLink>Register</NavLink>
+              <NavLink
+                to="/"
+                className={({isActive}) => (isActive ? "text-blue-700" : "")}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/login"
+                className={({isActive}) => (isActive ? "text-blue-700" : "")}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={({isActive}) => (isActive ? "text-blue-700" : "")}
+              >
+                Register
+              </NavLink>
+              <NavLink> LogOut</NavLink>
             </ul>
           </div>
         </nav>

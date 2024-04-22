@@ -1,3 +1,4 @@
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -54,27 +55,7 @@ const Register = () => {
                   </button>
                 </div>
               </form>
-              <div className="flex items-center  flex-col my-3">
-                <div>
-                  {/* <button>Sign in with Google</button> */}
-                  <button className=" ">
-                    <img
-                      className="h-8  "
-                      src="../../../public/google-btn.png"
-                      alt=""
-                    />
-                  </button>
-                </div>
-                <div>
-                  <button className="">
-                    <img
-                      className="h-8"
-                      src="../../../public/github-btn.png"
-                      alt=""
-                    />
-                  </button>
-                </div>
-              </div>
+              <SocialLogin/>
             </div>
 
             {/* Image */}

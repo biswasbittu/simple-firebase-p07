@@ -10,7 +10,7 @@ const Login = () => {
             <div className="md:w-1/2">
               <h2 className="text-2xl font-bold mb-4">Login</h2>
               <form className="space-y-4">
-                <div>
+                {/* <div>
                   <label className="block text-sm font-medium text-gray-600">
                     Name
                   </label>
@@ -21,7 +21,7 @@ const Login = () => {
                     placeholder="Enter your Name"
                     required
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-600">
@@ -56,7 +56,7 @@ const Login = () => {
                     Login
                   </button>
                 </div>
-                <p className="text-center">
+                <p className="text-center text-sky-400">
                   are you new? <Link to="/register" >register here..</Link>
                 </p>
               </form>

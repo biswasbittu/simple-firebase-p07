@@ -1,19 +1,21 @@
 import { useState } from "react";
 import app from "../Firebase/firebase.config";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 
 const SocialLogin = () => {
-  const [user,setUser]=useState(null)
+  const [user,setUser]=useState({})
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const gitProvider =new GithubAuthProvider();
+
 
   const handleGoogleSignIn =()=>{
     // console.log('Google mama is ready for work')
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
     .then((result)=>{
       const googleUser = result.user;
-      // console.log(googleUser)
+      console.log(googleUser)
       setUser(googleUser);
     })
     .catch((error)=>console.log(error.message))
@@ -21,6 +23,14 @@ const SocialLogin = () => {
   }
 const handleGithubSignIn = () => {
   // console.log("git mama is ready for work");
+  signInWithPopup(auth, gitProvider)
+  .then((result)=>{
+     const gitUser=result.user;
+     console.log(gitUser);
+  })
+  .catch((error)=>{
+      console.log(error.message);
+  })
 };
 
     return (

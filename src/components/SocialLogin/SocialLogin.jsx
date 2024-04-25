@@ -26,7 +26,8 @@ const handleGithubSignIn = () => {
   signInWithPopup(auth, gitProvider)
   .then((result)=>{
      const gitUser=result.user;
-     console.log(gitUser);
+    //  console.log(gitUser);
+    setUser(gitUser);
   })
   .catch((error)=>{
       console.log(error.message);

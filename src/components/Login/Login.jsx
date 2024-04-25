@@ -2,6 +2,19 @@ import { Link } from "react-router-dom";
 
 
 const Login = () => {
+
+  const handllogIn =( e )=>{
+    e.preventDefault();
+
+   const email = e.target.email.value;
+   const password = e.target.password.value;
+
+   console.log(email,password)
+    
+    
+  }
+
+  
     return (
       <div>
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -9,7 +22,7 @@ const Login = () => {
             {/* Login Form */}
             <div className="md:w-1/2">
               <h2 className="text-2xl font-bold mb-4">Login</h2>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handllogIn}>
                 {/* <div>
                   <label className="block text-sm font-medium text-gray-600">
                     Name
@@ -57,7 +70,7 @@ const Login = () => {
                   </button>
                 </div>
                 <p className="text-center text-sky-400">
-                  are you new? <Link to="/register" >register here..</Link>
+                  are you new? <Link to="/register">register here..</Link>
                 </p>
               </form>
             </div>

@@ -2,6 +2,18 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Register = () => {
+
+  const handleRegister = e =>{
+    e.preventDefault();
+   
+    const name =e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name,email,password);
+
+
+
+  }
     return (
       <div>
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -9,7 +21,7 @@ const Register = () => {
             {/* Login Form */}
             <div className="md:w-1/2 ">
               <h2 className="text-2xl font-bold mb-4">Login</h2>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleRegister}>
                 <div>
                   <label className="block text-sm font-medium text-gray-600">
                     Name
@@ -51,11 +63,11 @@ const Register = () => {
                     type="submit"
                     className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
                   >
-                    Login
+                    Register
                   </button>
                 </div>
               </form>
-              <SocialLogin/>
+              <SocialLogin />
             </div>
 
             {/* Image */}

@@ -1,7 +1,16 @@
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import app from "../Firebase/firebase.config";
+import { useState } from "react";
 
 
 const Register = () => {
+  const auth = getAuth(app);
+  const [success,setSuccess]=useState('');
+
+  const [error,setError]=useState("");
+
+
 
   const handleRegister = e =>{
     e.preventDefault();
@@ -9,18 +18,71 @@ const Register = () => {
     const name =e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name,email,password);
+    // console.log(name,email,password);
+    setSuccess('');
+    setError('');
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        
+        const user = userCredential.user;
+        console.log(user);
+        setSuccess('Register-Succefully');
+       
+      })
+      .catch((error) => {
+        console.log(error.message); 
+        setError(error.message);
 
-
-
+      });
   }
     return (
       <div>
+        {success && (
+          <div className="container mx-auto w-1/3">
+            <div role="alert" className="alert alert-success">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{success}</span>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="container mx-auto w-1/3">
+            <div role="alert" className="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{error}</span>
+            </div>
+          </div>
+        )}
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
           <div className="bg-white p-8 rounded-lg shadow-lg md:flex">
             {/* Login Form */}
             <div className="md:w-1/2 ">
-              <h2 className="text-2xl font-bold mb-4">Login</h2>
+              <h2 className="text-2xl font-bold mb-4">Register</h2>
               <form className="space-y-4" onSubmit={handleRegister}>
                 <div>
                   <label className="block text-sm font-medium text-gray-600">
